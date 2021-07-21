@@ -1,0 +1,117 @@
+$btn_cart__padding_tb: 5px;
+$btn_cart__font_size: 20px;
+
+@mixin section__padding_tb($padding_tb: 10px) {
+  padding-top: $padding_tb;
+  padding-bottom: $padding_tb;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.center {
+  padding: 0 calc((100% - 1200px) / 2);
+}
+
+.header {
+  background-color: gray;
+  @include section__padding_tb;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn_cart {
+  background-color: blueviolet;
+  color: greenyellow;
+  border: none;
+  cursor: pointer;
+  padding: $btn_cart__padding_tb
+    ($btn_cart__padding_tb + $btn_cart__font_size / 2);
+  border-radius: $btn_cart__padding_tb + $btn_cart__font_size / 2;
+  font-size: $btn_cart__font_size;
+}
+
+.btn_cart:hover {
+  background-color: greenyellow;
+  color: blueviolet;
+}
+
+.main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.products {
+  flex-grow: 1;
+  height: 100%;
+  @include section__padding_tb;
+  background-color: lightcyan;
+}
+
+.products_title {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 40px;
+}
+
+.products_list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.product_item {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #b0c4debf;
+  padding: 15px 0;
+  border-radius: 15px;
+  margin: 0 10px 40px;
+}
+
+.product_item:hover {
+  background-color: #b0c4de;
+}
+
+.product_img {
+  width: 200px;
+  margin-bottom: 5px;
+}
+
+.product_title {
+  margin-bottom: 5px;
+}
+
+.product_description {
+  margin-bottom: 5px;
+}
+
+.product_buy_btn {
+  background-color: lavender;
+  color: grey;
+  border: none;
+  cursor: pointer;
+  padding: $btn_cart__padding_tb
+    ($btn_cart__padding_tb + $btn_cart__font_size / 2);
+  border-radius: $btn_cart__padding_tb + $btn_cart__font_size / 2;
+  font-size: $btn_cart__font_size;
+}
+
+.product_buy_btn:hover {
+  background-color: grey;
+  color: lavender;
+}
