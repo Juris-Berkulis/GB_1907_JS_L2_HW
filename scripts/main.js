@@ -1,5 +1,3 @@
-let divProductsList = document.querySelector('.products_list');
-
 const products = [
     { id: 1, title: 'Notebook', price: 2000 },
     { id: 2, title: 'Mouse', price: 20 },
@@ -18,12 +16,16 @@ const renderProduct = (item) => {
             </div>`
 };
 
+//* Для варианта №2:
+//* let divProductsList = document.querySelector('.products_list');
+
 const renderPage = (list = products) => {
-    const productsList = list.map(item => renderProduct(item));
-    console.log(productsList);
-    for (let i = 1; i <= productsList.length; i++) {
-        divProductsList.innerHTML += productsList[i - 1];
-    }
+    document.querySelector('.products_list').innerHTML = list.map(item => renderProduct(item)).join('');
+    //* Вариант №2:
+    //* const productsList = list.map(item => renderProduct(item));
+    //* for (let i = 1; i <= productsList.length; i++) {
+    //*     divProductsList.innerHTML += productsList[i - 1];
+    //* }
 };
 
 renderPage();
