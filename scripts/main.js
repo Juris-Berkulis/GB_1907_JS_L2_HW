@@ -20,7 +20,9 @@ const renderProduct = (item) => {
 //* let divProductsList = document.querySelector('.products_list');
 
 const renderPage = (list = products) => {
+    //* Вариант №1:
     document.querySelector('.products_list').innerHTML = list.map(item => renderProduct(item)).join('');
+    
     //* Вариант №2:
     //* const productsList = list.map(item => renderProduct(item));
     //* for (let i = 1; i <= productsList.length; i++) {
