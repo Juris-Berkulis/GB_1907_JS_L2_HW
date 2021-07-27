@@ -1,33 +1,78 @@
-const products = [
-    { id: 1, title: 'Notebook', price: 2000 },
-    { id: 2, title: 'Mouse', price: 20 },
-    { id: 3, title: 'Keyboard', price: 200 },
-    { id: 4, title: 'Gamepad', price: 50 },
-];
-
-//Функция для формирования верстки каждого товара
-//Добавить в выводе изображение
-const renderProduct = (item) => {
-    return `<div class="product_item">
-                <img class="product_img" src="img/${item.title}.jpg" alt="${item.title}" width="200">
-                <h3 class="product_title">${item.title}</h3>
-                <p class="product_description">${item.price}</p>
-                <button class="product_buy_btn">Купить</button>
-            </div>`
-};
-
-//* Для варианта №2:
-//* let divProductsList = document.querySelector('.products_list');
-
-const renderPage = (list = products) => {
-    //* Вариант №1:
-    document.querySelector('.products_list').innerHTML = list.map(item => renderProduct(item)).join('');
+class ProductList{
+    constructor(container='.products_list'){
+        this.container = container;
+        this.goods = [];
+        this._fetchProducts();
+        this.render(); // вывод товаров на страницу.
+        this.getSum();
+    }
+    _fetchProducts() {
+        this.goods = [
+            {id: 1, title: 'Notebook', price: 2000},
+            {id: 2, title: 'Mouse', price: 20},
+            {id: 3, title: 'Keyboard', price: 200},
+            {id: 4, title: 'Gamepad', price: 50},
+        ];
+    }
     
-    //* Вариант №2:
-    //* const productsList = list.map(item => renderProduct(item));
-    //* for (let i = 1; i <= productsList.length; i++) {
-    //*     divProductsList.innerHTML += productsList[i - 1];
-    //* }
-};
+    render() {
+        const block = document.querySelector(this.container);
+        for(let product of this.goods){
+            const item = new ProductItem(product);
+            block.insertAdjacentHTML("beforeend", item.render()); // Аналог для block.innerHTML += item.render();, но работает быстрее.
+        }
+    }
 
-renderPage();
+    getSum() {
+        let sum = 0;
+        this.goods.forEach(item => {
+            sum += item.price;
+        })
+        document.querySelector('.products').insertAdjacentHTML("beforeend", `Сумма товаров: ${sum} руб.`);
+    }
+}
+
+class ProductItem{
+    constructor(product) {
+        this.title = product.title;
+        this.id = product.id;
+        this.price = product.price;
+        this.imgSrc = `img/${product.title}.jpg`;
+        this.imgAlt = `${product.title}`;
+        this.imgWidth = "200";
+    }
+    render() {
+        return `<div class="product_item">
+                    <img class="product_img" src="${this.imgSrc}" alt="${this.imgAlt}" width="${this.imgWidth}">
+                    <h3 class="product_title">${this.title}</h3>
+                    <p class="product_description">${this.price}</p>
+                    <button class="product_buy_btn">Купить</button>
+                </div>`
+    }
+}
+
+class Basket {
+    addProduct() {
+        //! TODO: заглушка.
+    }
+
+    removeProduct() {
+        //! TODO: заглушка.
+    }
+
+    changeProduct() {
+        //! TODO: заглушка.
+    }
+
+    render() {
+        //! TODO: заглушка.
+    }
+}
+
+class itemInBasket {
+    render() {
+        //! TODO: заглушка.
+    }
+}
+
+let list = new ProductList();
