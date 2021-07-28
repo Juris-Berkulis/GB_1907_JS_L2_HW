@@ -1,18 +1,23 @@
+const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
+
 class ProductList{
     constructor(container='.products_list'){
         this.container = container;
         this.goods = [];
-        this._fetchProducts();
-        this.render(); // вывод товаров на страницу.
-        this.getSum();
+        this._fetchProducts()
+            .then(data => { //data - объект js
+                this.goods = [...data];
+                this.render(); // вывод товаров на страницу.
+                this.getSum();
+            });
     }
+
     _fetchProducts() {
-        this.goods = [
-            {id: 1, title: 'Notebook', price: 2000},
-            {id: 2, title: 'Mouse', price: 20},
-            {id: 3, title: 'Keyboard', price: 200},
-            {id: 4, title: 'Gamepad', price: 50},
-        ];
+        return fetch(`${API}/catalogData.json`)
+            .then(result => result.json())
+            .catch(error => {
+                console.log(error);
+            })
     }
     
     render() {
@@ -34,11 +39,11 @@ class ProductList{
 
 class ProductItem{
     constructor(product) {
-        this.title = product.title;
-        this.id = product.id;
+        this.title = product.product_name;
+        this.id = product.id_product;
         this.price = product.price;
-        this.imgSrc = `img/${product.title}.jpg`;
-        this.imgAlt = `${product.title}`;
+        this.imgSrc = `img/${product.product_name}.jpg`;
+        this.imgAlt = `${product.product_name}`;
         this.imgWidth = "200";
     }
     render() {
