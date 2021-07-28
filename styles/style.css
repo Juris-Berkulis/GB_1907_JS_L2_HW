@@ -24,6 +24,7 @@ body {
 }
 
 .header {
+  height: 10vh;
   background-color: gray;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -33,6 +34,9 @@ body {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .btn_cart {
@@ -67,6 +71,7 @@ body {
 }
 
 .products {
+  position: relative;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -138,6 +143,145 @@ body {
 }
 
 .product_buy_btn:hover {
+  background-color: grey;
+  color: lavender;
+}
+
+.basket_close {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  overflow: hidden;
+}
+
+.basket_close:hover {
+  background-color: #0000005c;
+}
+
+.basket_x {
+  display: block;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 100px;
+  line-height: 50px;
+  -webkit-transform: rotateZ(45deg);
+          transform: rotateZ(45deg);
+  color: #0000005c;
+  font-weight: 100;
+}
+
+.basket_close:hover .basket_x {
+  color: #efefef;
+}
+
+.basket_list {
+  display: none;
+  position: absolute;
+  top: 5vh;
+  left: 20vw;
+  width: 60vw;
+  height: 80vh;
+  background-color: #efefef;
+  border-radius: 30px;
+  padding: 10px;
+}
+
+.basket_item {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #efefef;
+  background-color: #008000ba;
+  padding: 15px 15px;
+  border-radius: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.basket_item:hover {
+  background-color: #008000;
+}
+
+.basket_right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.basket_left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.basket_img {
+  width: 50px;
+  margin-right: 20px;
+}
+
+.basket_title {
+  margin-right: 20px;
+}
+
+.basket_description {
+  margin-right: 20px;
+}
+
+.basket_panel {
+  width: 10vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.basket_btn {
+  width: 40px;
+  height: 40px;
+  background-color: lavender;
+  color: grey;
+  border: none;
+  cursor: pointer;
+  padding: 5px 15px;
+  border-radius: 50%;
+  font-size: 20px;
+}
+
+.basket_btn:hover {
   background-color: grey;
   color: lavender;
 }
