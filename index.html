@@ -26,7 +26,7 @@
                         <img class="product_img" :src="imgCatalog" :alt="product.product_name" width="200">
                         <h3 class="product_title">{{ product.product_name }}</h3>
                         <p class="product_description">{{ product.price }}</p>
-                        <button class="product_buy_btn">Купить</button>
+                        <button class="product_buy_btn" @click="addProduct(product)">Купить</button>
                     </div>
                 </div>
                 <button class="basket_close" type="button" @click="showBasket=false" v-show="showBasket"><span class="basket_x">+</span></button>
@@ -39,11 +39,15 @@
                         <div class="basket_right">
                             <p class="basket_description">{{ baskProduct.price }}</p>
                             <div class="basket_panel">
-                                <button class="basket_btn basket_btn-minus">-</button>
+                                <button class="basket_btn basket_btn-minus" @click="removeProduct(baskProduct)">-</button>
                                 <p class="basket_count">{{ baskProduct.quantity }}</p>
-                                <button class="basket_btn basket_btn-plus">+</button>
+                                <button class="basket_btn basket_btn-plus" @click="addProduct(baskProduct)">+</button>
                             </div>
+                            <p class="basket_all_price_product">Всего: {{ baskProduct.price * baskProduct.quantity }}</p>
                         </div>
+                    </div>
+                    <div class="space_in_basket">
+                        <p class="space_in_basket__paragraph" v-if="!basketProducts.length">Корзина пуста</p>
                     </div>
                 </div>
             </section>
