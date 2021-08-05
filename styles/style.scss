@@ -15,15 +15,15 @@ $products_basket__height: 80vh;
   box-sizing: border-box;
 }
 
-body {
+.center {
+  padding: 0 calc((100% - 1200px) / 2);
+}
+
+.shop {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-}
-
-.center {
-  padding: 0 calc((100% - 1200px) / 2);
 }
 
 .header {

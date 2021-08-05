@@ -5,7 +5,11 @@
           box-sizing: border-box;
 }
 
-body {
+.center {
+  padding: 0 calc((100% - 1200px) / 2);
+}
+
+.shop {
   min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -17,10 +21,6 @@ body {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-}
-
-.center {
-  padding: 0 calc((100% - 1200px) / 2);
 }
 
 .header {

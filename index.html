@@ -6,19 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/style.css">
     <title>Интернет-магазин</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14" defer></script>
+    <script src="scripts/main.js" defer></script>
 </head>
 <body>
-    <header class="header center">
-        <button class="btn_cart" type="button">Корзина</button>
-    </header>
-    <main class="main">
-        <section class="products center">
-            <h1 class="products_title">Список товаров</h1>
-            <div class="products_list"></div>
-            <button class="basket_close"><span class="basket_x">+</span></button>
-            <div class="basket_list"></div>
-        </section>
-    </main>
-    <script src="scripts/main.js"></script>
+    <div class="shop show_basket">
+        <header class="header center">
+            <button class="btn_cart" type="button" @click=basketOpen()>Корзина</button>
+        </header>
+        <main class="main">
+            <section class="products center">
+                <h1 class="products_title">Список товаров</h1>
+                <div class="products_list">
+                    <div class="product_item" v-for="product of products" :key="product.id_product">
+                        <img class="product_img" :src="imgCatalog" :alt="product.product_name" width="200">
+                        <h3 class="product_title">{{ product.product_name }}</h3>
+                        <p class="product_description">{{ product.price }}</p>
+                        <button class="product_buy_btn">Купить</button>
+                    </div>
+                </div>
+                <button class="basket_close" type="button" @click=basketClose()><span class="basket_x">+</span></button>
+                <div class="basket_list">
+                    <div class="basket_item" v-for="baskProduct of basketProducts" :key="basketProducts.id_product">
+                        <div class="basket_left">
+                            <img class="basket_img" :src="imgBasket" :alt="baskProduct.product_name" width="200">
+                            <h3 class="basket_title">{{ baskProduct.product_name }}</h3>
+                        </div>
+                        <div class="basket_right">
+                            <p class="basket_description">{{ baskProduct.price }}</p>
+                            <div class="basket_panel">
+                                <button class="basket_btn basket_btn-minus">-</button>
+                                <p class="basket_count">{{ baskProduct.quantity }}</p>
+                                <button class="basket_btn basket_btn-plus">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
 </body>
 </html>
