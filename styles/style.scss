@@ -15,15 +15,15 @@ $products_basket__height: 80vh;
   box-sizing: border-box;
 }
 
-body {
+.center {
+  padding: 0 calc((100% - 1200px) / 2);
+}
+
+.shop {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-}
-
-.center {
-  padding: 0 calc((100% - 1200px) / 2);
 }
 
 .header {
@@ -35,9 +35,39 @@ body {
   align-items: center;
 }
 
+.search {
+  margin-right: 20px;
+}
+
+.search__input {
+  margin-right: 10px;
+  border: none;
+  padding: $btn_cart__padding_tb
+    ($btn_cart__padding_tb + $btn_cart__font_size / 2);
+  border-radius: $btn_cart__padding_tb + $btn_cart__font_size / 2;
+  font-size: $btn_cart__font_size;
+  outline: none;
+}
+
+.search__btn {
+  background-color: lightblue;
+  color: cornflowerblue;
+  border: none;
+  cursor: pointer;
+  padding: $btn_cart__padding_tb
+    ($btn_cart__padding_tb + $btn_cart__font_size / 2);
+  border-radius: $btn_cart__padding_tb + $btn_cart__font_size / 2;
+  font-size: $btn_cart__font_size;
+}
+
+.search__btn:hover {
+  background-color: cornflowerblue;
+  color: lightblue;
+}
+
 .btn_cart {
-  background-color: blueviolet;
-  color: greenyellow;
+  background-color: plum;
+  color: blueviolet;
   border: none;
   cursor: pointer;
   padding: $btn_cart__padding_tb
@@ -47,8 +77,8 @@ body {
 }
 
 .btn_cart:hover {
-  background-color: greenyellow;
-  color: blueviolet;
+  background-color: blueviolet;
+  color: plum;
 }
 
 .main {
@@ -123,7 +153,7 @@ body {
 }
 
 .basket_close {
-  display: none;
+  // display: none;
   position: absolute;
   top: 0;
   left: 0;
@@ -156,7 +186,7 @@ body {
 }
 
 .basket_list {
-  display: none;
+  // display: none;
   position: absolute;
   top: (100vh - $header__height - $products_basket__height) / 2;
   left: (100vw - $products_basket__width) / 2;
@@ -215,6 +245,7 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin-right: 20px;
 }
 
 .basket_btn {
@@ -233,4 +264,15 @@ body {
 .basket_btn:hover {
   background-color: grey;
   color: lavender;
+}
+
+.space_in_basket {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.space_in_basket__paragraph {
+  font-size: 48px;
 }
