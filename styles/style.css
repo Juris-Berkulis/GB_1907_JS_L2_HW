@@ -39,9 +39,37 @@
           align-items: center;
 }
 
+.search {
+  margin-right: 20px;
+}
+
+.search__input {
+  margin-right: 10px;
+  border: none;
+  padding: 5px 15px;
+  border-radius: 15px;
+  font-size: 20px;
+  outline: none;
+}
+
+.search__btn {
+  background-color: lightblue;
+  color: cornflowerblue;
+  border: none;
+  cursor: pointer;
+  padding: 5px 15px;
+  border-radius: 15px;
+  font-size: 20px;
+}
+
+.search__btn:hover {
+  background-color: cornflowerblue;
+  color: lightblue;
+}
+
 .btn_cart {
-  background-color: blueviolet;
-  color: greenyellow;
+  background-color: plum;
+  color: blueviolet;
   border: none;
   cursor: pointer;
   padding: 5px 15px;
@@ -50,8 +78,8 @@
 }
 
 .btn_cart:hover {
-  background-color: greenyellow;
-  color: blueviolet;
+  background-color: blueviolet;
+  color: plum;
 }
 
 .main {
@@ -148,7 +176,6 @@
 }
 
 .basket_close {
-  display: none;
   position: absolute;
   top: 0;
   left: 0;
@@ -182,7 +209,6 @@
 }
 
 .basket_list {
-  display: none;
   position: absolute;
   top: 5vh;
   left: 20vw;

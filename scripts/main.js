@@ -7,23 +7,26 @@ const show_basket = new Vue({
         products: [],
         imgCatalog: 'https://via.placeholder.com/200x150',
         basketUrl: '/getBasket.json',
+        showBasket: false,
         basketProducts: [],
         imgBasket: 'https://via.placeholder.com/200x150',
         userSearch: '',
+        filrerProducts: [],
     },
     methods: {
-        basketOpen() {
-            const btnBasketClose = document.querySelector('.basket_close');
-            btnBasketClose.style.display = 'block';
-            const divBasketList = document.querySelector('.basket_list');
-            divBasketList.style.display = 'block';
-        },
-        basketClose() {
-            const btnBasketClose = document.querySelector('.basket_close');
-            btnBasketClose.style.display = 'none';
-            const divBasketList = document.querySelector('.basket_list');
-            divBasketList.style.display = 'none';
-        },
+        //* Вариант 2 для открытия и закрытия корзины вместо showBasket (для работы методов необходимо для .btn_cart и .basket_close для атрибутов @click поставить значения basketOpen() и basketClose(), соответственно. А в стилях для классов .basket_list и .basket_close добавить display: none).
+        //* basketOpen() {
+        //*     const btnBasketClose = document.querySelector('.basket_close');
+        //*     btnBasketClose.style.display = 'block';
+        //*     const divBasketList = document.querySelector('.basket_list');
+        //*     divBasketList.style.display = 'block';
+        //* },
+        //* basketClose() {
+        //*     const btnBasketClose = document.querySelector('.basket_close');
+        //*     btnBasketClose.style.display = 'none';
+        //*     const divBasketList = document.querySelector('.basket_list');
+        //*     divBasketList.style.display = 'none';
+        //* },
         getJson(url){
             return fetch(url)
                 .then(result => result.json())
@@ -31,6 +34,10 @@ const show_basket = new Vue({
                     console.log(error);
                 })
         },
+        filter(){
+            const regexp = new RegExp(this.userSearch, 'i');
+            this.filrerProducts = this.products.filter(product => regexp.test(product.product_name));
+        }
         // addProduct(product){
         //     console.log(product.id_product);
         // }
@@ -39,7 +46,8 @@ const show_basket = new Vue({
         this.getJson(`${API + this.catalogUrl}`)
             .then(data => {
                 for(let el of data){
-                    this.products.push(el);
+                    this.$data.products.push(el); //* $data указывает явно на обращение к массиву из data, но, если нет в данном блоке переопределения этого массива, то можно обойтись и без $data.
+                    this.$data.filrerProducts.push(el); //* $data указывает явно на обращение к массиву из data, но, если нет в данном блоке переопределения этого массива, то можно обойтись и без $data.
                 }
             });
         this.getJson(`${API + this.basketUrl}`)
@@ -48,19 +56,7 @@ const show_basket = new Vue({
                     this.basketProducts.push(el);
                 }
         });
-    },
-    //     filter(value){
-    //         const regexp = new RegExp(value, 'i');
-    //         this.filtered = this.allProducts.filter(product => regexp.test(product.product_name));
-    //         this.allProducts.forEach(el => {
-    //             const block = document.querySelector(`.product-item[data-id="${el.id_product}"]`);
-    //             if(!this.filtered.includes(el)){
-    //                 block.classList.add('invisible');
-    //             } else {
-    //                 block.classList.remove('invisible');
-    //             }
-    //         })
-    //     }
+    }
 })
 
 
