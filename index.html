@@ -7,29 +7,40 @@
     <link rel="stylesheet" href="styles/style.css">
     <title>Интернет-магазин</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14" defer></script>
+    <script src="scripts/componentAccessError.js" defer></script>
+    <script src="scripts/componentCatalog.js" defer></script>
+    <script src="scripts/componentBasket.js" defer></script>
+    <script src="scripts/componentFilter.js" defer></script>
     <script src="scripts/main.js" defer></script>
 </head>
 <body>
     <div class="shop show_basket">
         <header class="header center">
+            <!--* Вёрстка обрабатывается в файле "componentFilter.js":
             <form class="search" action="#" @submit.prevent="filter">
                 <input class="search__input" type="text" placeholder="Фильтр" v-model="userSearch">
                 <button class="search__btn" type="submit">Найти</button>
             </form>
+            -->
+            <search></search>
             <button class="btn_cart" type="button" @click="showBasket=true">Корзина</button>
         </header>
         <main class="main">
             <section class="products center">
                 <h1 class="products_title">Список товаров</h1>
+                <!--* Вёрстка обрабатывается в файле "componentCatalog.js":
                 <div class="products_list">
-                    <div class="product_item" v-for="product of filrerProducts" :key="product.id_product">
+                    <div class="product_item" v-for="product of filterProducts" :key="product.id_product">
                         <img class="product_img" :src="imgCatalog" :alt="product.product_name" width="200">
                         <h3 class="product_title">{{ product.product_name }}</h3>
                         <p class="product_description">{{ product.price }}</p>
                         <button class="product_buy_btn" @click="addProduct(product)">Купить</button>
                     </div>
                 </div>
+                -->
+                <products_list :products="filterProducts" :img_catalog="imgCatalog"></products_list>
                 <button class="basket_close" type="button" @click="showBasket=false" v-show="showBasket"><span class="basket_x">+</span></button>
+                <!--* Вёрстка обрабатывается в файле "componentBasket.js":
                 <div class="basket_list" v-show="showBasket">
                     <div class="basket_item" v-for="baskProduct of basketProducts" :key="basketProducts.id_product">
                         <div class="basket_left">
@@ -50,6 +61,20 @@
                         <p class="space_in_basket__paragraph" v-if="!basketProducts.length">Корзина пуста</p>
                     </div>
                 </div>
+                -->
+                <basket_list :basket_items="basketProducts" :img_basket="imgBasket" :visibility="showBasket" @removeProduct="removeProduct">
+                    <div class="space_in_basket" v-if="!basketProducts.length">
+                        <p class="space_in_basket__paragraph">Корзина пуста</p>
+                    </div>
+                </basket_list>
+                <!--* Вёрстка обрабатывается в файле "componentAccessError.js":
+                <div class="access_error">
+                    <div class="access_error__text_position">
+                        <p class="access_error__description">Не удалось выполнить запрос к серверу!</p>
+                    </div>
+                </div>
+                -->
+                <access_error v-if="accessError"></access_error>
             </section>
         </main>
     </div>

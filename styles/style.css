@@ -329,4 +329,33 @@
 .space_in_basket__paragraph {
   font-size: 48px;
 }
+
+.access_error {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  min-height: 90vh;
+  background-color: #efefef;
+  z-index: 5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.access_error__text_position {
+  margin: 0 20vw;
+}
+
+.access_error__description {
+  text-align: center;
+  font-size: 72px;
+  color: red;
+}
 /*# sourceMappingURL=style.css.map */
