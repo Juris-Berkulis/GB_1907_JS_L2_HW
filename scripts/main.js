@@ -11,8 +11,9 @@ const show_basket = new Vue({
         basketProducts: [],
         imgBasket: 'https://via.placeholder.com/200x150',
         userSearch: '',
-        filrerProducts: [],
-        checkConnectUrl: '/addToBasket.json'
+        filterProducts: [],
+        checkConnectUrl: '/addToBasket.json',
+        accessError: false
     },
     methods: {
         //* Вариант 2 для открытия и закрытия корзины вместо showBasket (для работы методов необходимо для .btn_cart и .basket_close для атрибутов @click поставить значения basketOpen() и basketClose(), соответственно. А в стилях для классов .basket_list и .basket_close добавить display: none).
@@ -33,11 +34,12 @@ const show_basket = new Vue({
                 .then(result => result.json())
                 .catch(error => {
                     console.log(error);
+                    this.accessError = true;
                 })
         },
         filter(){
             const regexp = new RegExp(this.userSearch, 'i');
-            this.filrerProducts = this.products.filter(product => regexp.test(product.product_name));
+            this.filterProducts = this.products.filter(product => regexp.test(product.product_name));
         },
         addProduct(product){
             this.getJson(`${API + this.checkConnectUrl}`) //* 3 строки проверки связи с сервером.
@@ -72,7 +74,7 @@ const show_basket = new Vue({
             .then(data => {
                 for(let el of data){
                     this.$data.products.push(el); //* $data указывает явно на обращение к массиву из data, но, если нет в данном блоке переопределения этого массива, то можно обойтись и без $data.
-                    this.$data.filrerProducts.push(el); //* $data указывает явно на обращение к массиву из data, но, если нет в данном блоке переопределения этого массива, то можно обойтись и без $data.
+                    this.$data.filterProducts.push(el); //* $data указывает явно на обращение к массиву из data, но, если нет в данном блоке переопределения этого массива, то можно обойтись и без $data.
                 }
             });
         this.getJson(`${API + this.basketUrl}`)
@@ -80,6 +82,6 @@ const show_basket = new Vue({
                 for(let el of data.contents){
                     this.basketProducts.push(el);
                 }
-        });
+            });
     }
 })
