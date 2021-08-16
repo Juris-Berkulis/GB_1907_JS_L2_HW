@@ -1,0 +1,23 @@
+{
+  "name": "04_JavaScript_Level_2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Juris-Berkulis/GB_1907_JS_L2_HW.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Juris-Berkulis/GB_1907_JS_L2_HW/issues"
+  },
+  "homepage": "https://github.com/Juris-Berkulis/GB_1907_JS_L2_HW#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
