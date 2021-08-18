@@ -29,6 +29,4 @@ app.get('/api/products', (req, res) => {
 // });
 
 const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`Listen on port ${port}...`));
-
-//! node server\server.js - команда для запуска черезтерминал (потом в браузере набрать "localhost:3000/").
+app.listen(port, () => console.log(`Listen to port ${port}...`));
