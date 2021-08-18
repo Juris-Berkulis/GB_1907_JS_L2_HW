@@ -1,0 +1,20 @@
+{
+    "amount": 0,
+    "countGoods": 0,
+    "contents": [
+        {
+            "quantity": 1,
+            "id_product": 456,
+            "product_name": "Flowers",
+            "price": 1000,
+            "img": "./img/flowers.jpg"
+        },
+        {
+            "quantity": 3,
+            "id_product": 124,
+            "product_name": "Old Car",
+            "price": 1600,
+            "img": "./img/oldCar.jpg"
+        }
+    ]
+}

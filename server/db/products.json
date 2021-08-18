@@ -1,0 +1,26 @@
+[
+  {
+    "id_product": 124,
+    "product_name": "Old Car",
+    "price": 1600,
+    "img": "./img/oldCar.jpg"
+  },
+  {
+    "id_product": 457,
+    "product_name": "Dog",
+    "price": 3000,
+    "img": "./img/dog.jpg"
+  },
+  {
+    "id_product": 123,
+    "product_name": "Laptop",
+    "price": 45600,
+    "img": "./img/laptop.jpg"
+  },
+  {
+    "id_product": 456,
+    "product_name": "Flowers",
+    "price": 1000,
+    "img": "./img/flowers.jpg"
+  }
+]
