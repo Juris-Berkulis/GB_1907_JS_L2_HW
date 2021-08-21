@@ -38,26 +38,55 @@ Vue.component('cart', {
                     })
             }
         },
-        remove(item){
-            this.$parent.getJson(`${API}/addToBasket.json`)
+        // remove(item){
+        //     this.$parent.getJson(`${API}/addToBasket.json`)
+        //         .then(data => {
+        //             if (data.result === 1) {
+        //                 this.cartItems.splice(this.cartItems.indexOf(item), 1);
+        //             }
+        //         })
+        // },
+        // minusItem(item){
+        //     this.$parent.getJson(`${API}/addToBasket.json`)
+        //         .then(data => {
+        //             if (data.result === 1) {
+        //                 if (item.quantity > 1) {
+        //                     item.quantity--;
+        //                 } else {
+        //                     this.cartItems.splice(this.cartItems.indexOf(item), 1);
+        //                 }
+        //             }
+        //         })
+        // }
+        minusProduct(product) {
+            if (product.quantity > 1) {
+                this.$parent.putJson(`/api/cart/${ product.id_product }`, { quantity: -1 })
+                    .then(data => {
+                        if (data.result) {
+                            product.quantity--;
+                        }
+                    })
+            } else {
+                this.$parent.delJson(`/api/cart/${ product.id_product }`, product)
+                    .then(data => {
+                        if (data.result) {
+                            this.cartItems.splice(this.cartItems.indexOf(product), 1);
+                        } else {
+                            console.log('error!!!!');
+                        }
+                    })
+            }
+        },
+        remove(product) {
+            this.$parent.delJson(`/api/cart/${ product.id_product }`, product)
                 .then(data => {
-                    if (data.result === 1) {
-                        this.cartItems.splice(this.cartItems.indexOf(item), 1);
+                    if (data.result) {
+                        this.cartItems.splice(this.cartItems.indexOf(product), 1);
+                    } else {
+                        console.log('error');
                     }
                 })
         },
-        minusItem(item){
-            this.$parent.getJson(`${API}/addToBasket.json`)
-                .then(data => {
-                    if (data.result === 1) {
-                        if (item.quantity > 1) {
-                            item.quantity--;
-                        } else {
-                            this.cartItems.splice(this.cartItems.indexOf(item), 1);
-                        }
-                    }
-                })
-        }
     },
     template: `<div>
                 <button class="btn_cart" type="button" @click="showCart = !showCart">Корзина</button>
@@ -67,7 +96,7 @@ Vue.component('cart', {
                     :img="item.imgPath" 
                     :cart-item="item" 
                     @remove="remove" 
-                    @minus="minusItem" 
+                    @minus="minusProduct" 
                     @add="addProduct">
                     </cart-item>
                 </div>
@@ -84,7 +113,7 @@ Vue.component('cart-item', {
                     <h3 class="basket_title">{{ cartItem.product_name }}</h3>
                 </div>
                 <div class="basket_right">
-                    <p class="basket_description">$ {{ cartItem.price }} each</p>
+                    <p class="basket_description">{{ cartItem.price }} $ / 1 шт.</p>
                     <div class="basket_panel">        
                         <button class="basket_btn basket_btn-minus" @click="$emit('minus', cartItem)">-</button>
                         <p class="basket_count"> {{ cartItem.quantity }}</p>
