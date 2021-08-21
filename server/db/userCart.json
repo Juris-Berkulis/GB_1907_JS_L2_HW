@@ -6,13 +6,13 @@
             "id_product": 123,
             "product_name": "Ноутбук",
             "price": 45600,
-            "quantity": 4
+            "quantity": 5
         },
         {
             "id_product": 456,
             "product_name": "Мышка",
             "price": 1000,
-            "quantity": 3
+            "quantity": 12
         },
         {
             "id_product": 457,
@@ -24,7 +24,7 @@
             "id_product": 124,
             "product_name": "Клавиатура",
             "price": 1600,
-            "quantity": 2
+            "quantity": 8
         }
     ]
 }
