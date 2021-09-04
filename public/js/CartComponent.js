@@ -67,14 +67,7 @@ Vue.component('cart', {
                         }
                     })
             } else {
-                this.$parent.delJson(`/api/cart/${ product.id_product }`, product)
-                    .then(data => {
-                        if (data.result) {
-                            this.cartItems.splice(this.cartItems.indexOf(product), 1);
-                        } else {
-                            console.log('error!!!!');
-                        }
-                    })
+                this.remove(product);
             }
         },
         remove(product) {
@@ -83,13 +76,17 @@ Vue.component('cart', {
                     if (data.result) {
                         this.cartItems.splice(this.cartItems.indexOf(product), 1);
                     } else {
-                        console.log('error');
+                        console.log('error!');
                     }
                 })
         },
     },
-    template: `<div>
-                <button class="btn_cart" type="button" @click="showCart = !showCart">Корзина</button>
+    template: `
+            <div>
+                <button class="basket_close" type="button" @click="showCart=false" v-show="showCart">
+                    <span class="basket_x">+</span>
+                </button>
+                <button class="btn_cart" type="button" @click="showCart=true">Корзина</button>
                 <div class="basket_list" v-show="showCart">
                     <cart-item v-for="item of cartItems" 
                     :key="item.id_product" 
@@ -99,6 +96,9 @@ Vue.component('cart', {
                     @minus="minusProduct" 
                     @add="addProduct">
                     </cart-item>
+                    <div class="space_in_basket" v-if="!cartItems.length">
+                        <p class="space_in_basket__paragraph">Корзина пуста</p>
+                    </div>
                 </div>
             </div>
             `
