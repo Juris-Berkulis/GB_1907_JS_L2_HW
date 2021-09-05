@@ -1531,6 +1531,41 @@ button {
   color: lavender;
 }
 
+.basket_close {
+  // display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  overflow: hidden;
+  z-index: 991;
+}
+
+.basket_close:hover {
+  background-color: #0000005c;
+}
+
+.basket_x {
+  display: block;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 100px;
+  line-height: 50px;
+  transform: rotateZ(45deg);
+  color: #0000005c;
+  font-weight: 100;
+  z-index: 992;
+}
+
+.basket_close:hover .basket_x {
+  color: #efefef;
+}
+
 .btn_cart {
   background-color: plum;
   color: blueviolet;
@@ -1645,41 +1680,6 @@ button {
 .basket_btn_del:hover {
   color: white;
   background-color: red;
-}
-
-.basket_close {
-  // display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: transparent;
-  cursor: pointer;
-  border: none;
-  overflow: hidden;
-  z-index: 991;
-}
-
-.basket_close:hover {
-  background-color: #0000005c;
-}
-
-.basket_x {
-  display: block;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 100px;
-  line-height: 50px;
-  transform: rotateZ(45deg);
-  color: #0000005c;
-  font-weight: 100;
-  z-index: 992;
-}
-
-.basket_close:hover .basket_x {
-  color: #efefef;
 }
 
 .space_in_basket {
